@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<project basedir=".">
+
+	<!-- ////  Global Properties //// -->
+	<property name="internal.paths.buildFolderPath" value="${path::get-directory-name(project::get-buildfile-path())}" />
+	<property name="cleanUp" value="True" />
+	<!-- ////  End Global Properties //// -->
+
+
+	<!--The purpose of the this target is to build the files and if the build is successfull then the
+		files are copied to the buildoutput folder.	-->
+	<target name="BuildApplication">
+
+		<!-- Define output path -->
+		<property name="buildOutputPath" value="${rootOutputDirectory}\${version}\${buildEnvironment}" />
+
+		<!-- Working Path Setup -->
+		<if test="${not directory::exists(buildOutputPath)}">
+			<mkdir dir="${buildOutputPath}" />
+		</if>
+
+		<!-- Update the build type to release -->
+		<property name="configuration" value="Release" />
+		
+				<!-- Delete files in the output folder from the previous biuld -->
+		<delete>
+			<fileset>
+				<include name="${buildOutputPath}\**" />
+				<exclude name="${buildOutputPath}" />
+			</fileset>
+		</delete>
+
+		<!--Inject Revision Number-->
+		<exec program="${internal.paths.buildFolderPath}\VersionInjectornator.exe" append="true">
+			<arg value="&quot;${buildEnvironment}&quot; &quot;${buildOutputPath}&quot;" />
+		</exec>
+
+		<!-- Create the bin folder path -->
+		<property name="dllFolder" value="${buildOutputPath}\bin" />
+
+		<!-- Create the bin folder -->
+		<if test="${not directory::exists(dllFolder)}">
+			<mkdir dir="${dllFolder}" />
+		</if>
+
+		<!-- Build The Sites -->
+		<foreach item="File" property="visualStudioSolutionFile">
+			<in>
+				<items>
+					<include name="${internal.paths.buildFolderPath}\..\**\*.sln" />
+					<exclude name="${internal.paths.buildFolderPath}\..\Builder\**" />
+				</items>
+			</in>
+			<do>
+				<echo message="Building ${visualStudioSolutionFile}" />
+				<msbuild project="${visualStudioSolutionFile}" target="Build" failonerror="true">
+					<property name="Configuration" value="${configuration}" readonly="true" />
+
+					<!-- drop the compiled dlls directly into the output folder -->
+					<property name="OutputPath" value="${dllFolder}" readonly="true" />
+				</msbuild>
+			</do>
+		</foreach>
+
+		<echo message="Root project folder ${internal.paths.buildFolderPath}\..\Source\${rootProjectFolder}" />
+
+		<!--Copy all Site files to Output directory-->
+		<copy todir="${buildOutputPath}" includeemptydirs="false" >
+			<fileset basedir="${internal.paths.buildFolderPath}\..\Source\${rootProjectFolder}">
+				<include name="**" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\bin\**" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\obj\**" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\**\*.cs" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.csproj" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.sql" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.cache" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.sln" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.suo" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\*.user" />
+				<exclude name="${internal.paths.buildFolderPath}\..\Source\**\web.config" />
+			</fileset>
+		</copy>
+
+
+		<!-- Config file path  -->
+		<property name="configPath" value="${internal.paths.buildFolderPath}\..\Configuration\${buildEnvironment}.Web.Config" />
+
+		<!-- if the configuration file exist copy it to the output directory -->
+		<if test="${file::exists(configPath)}" >
+			<copy file="${configPath}" tofile="${buildOutputPath}\web.config" overwrite="true" failonerror="true" />
+		</if>
+
+		<!-- Delete the _PublishedWebsites folder if it exists -->
+		<property name="publishedWebsitesPath" value="${buildOutputPath}\bin\_PublishedWebsites" />
+		<echo message="Published Websites folder = ${publishedWebsitesPath}" />
+		<delete dir="${publishedWebsitesPath}" if="${directory::exists(publishedWebsitesPath)}" />
+
+		<!-- Copy external files into the directory output directory -->
+		<exec program="${internal.paths.buildFolderPath}\FileCopier.exe" append="true">
+			<arg value="&quot;${internal.paths.buildFolderPath}\..&quot; &quot;${buildOutputPath}&quot; &quot;${buildEnvironment}&quot;" />
+		</exec>
+	</target>
+
+
+
+
+
+
+
+
+	<target name="deploy" >
+		<property name="cleanUp" value="False" />
+		
+		<!-- Define output path -->
+		<property name="buildOutputPath" value="${rootOutputDirectory}\${version}\${buildEnvironment}" />
+
+		<!-- take sites offline to release file locks -->
+		<copy  file="${internal.paths.buildFolderPath}\app_offline.htm" tofile="${destinationPath.rootSite}\app_offline.htm" overwrite="true" failonerror="false" />
+
+		<!-- Delete Exisiting Site -->
+		<delete>
+			<fileset>
+				<include name="${destinationPath.rootSite}\**" />
+				<exclude name="${destinationPath.rootSite}\app_offline.htm" />
+			</fileset>
+		</delete>
+
+		<!-- Define output path -->
+		<property name="rootSitePath" value="${destinationPath.rootSite}\" />
+
+		<!-- Create Directory if it doesnt exist -->
+		<if test="${not directory::exists(rootSitePath)}">
+			<mkdir dir="${rootSitePath}" />
+		</if>
+
+    <copy todir="${rootSitePath}">
+      <fileset basedir="${buildOutputPath}\">
+        <include name="**" />
+      </fileset>
+    </copy>
+    
+		<!--Delete app_offline.html-->
+		<delete file="${destinationPath.rootSite}\app_offline.htm" />
+	</target>
+
+	<target name="revert">
+		<!-- Run a Subversion revert on the folder. -->
+		<exec program="svn.exe" append="true">
+			<arg value="revert -R &quot;${internal.paths.buildFolderPath}\..&quot;" />
+		</exec>
+	</target>
+
+</project>

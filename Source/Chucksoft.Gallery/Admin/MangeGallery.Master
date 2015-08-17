@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MangeGallery.master.cs" Inherits="Chucksoft.Admin.MangeGallery" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <style type="text/css">@import url("style.css");</style>
+<%--    <script type="text/javascript" src="JavaScript/Silverlight.js"></script>--%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <script src="../Scripts/prototype.lite.js" type="text/javascript"></script>        
+    <script src="../Scripts/moo.fx.js" type="text/javascript"></script>
+    <script src="../Scripts/litebox-1.0.js" type="text/javascript"></script>
+    <style type="text/css" media="screen">@import url("../litebox.css");</style>
+
+    <script  type="text/javascript">
+        window.onload=function()
+        {
+             initLightbox();
+        }
+    </script>
+  
+    <script type="text/javascript" src="JavaScript/AdminScript.js"></script>    
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="admincontainer">
+        <div id="topnav" >
+            <a href="../" title="View the photo gallery" style="float:left;" ><< View photo gallery</a>
+            <ul>
+                <li>Hello, <asp:Literal ID="userFirstName" runat="server" /></li>
+                <li> | <a href="Help.aspx" title="Add and Manage your Users" >Help</a></li>
+                <li> | <a href="Logout.aspx" title="Add and Manage your Users" >Log Out</a></li>
+            </ul>
+            <div style="clear:both;" ></div>
+        </div>
+        
+        <div id="headerimage"></div>
+ 
+    
+        <ul id="primarynavigation">
+            <li><a href="Default.aspx" title="Add and Manage your photos" >Add</a></li> 
+            <li><a href="Manage.aspx" title="Add and Manage your Galleries" >Manage</a></li>
+            <li><a href="Settings.aspx" title="Configure your photo gallery" >Settings</a></li>
+        </ul> 
+        
+        <asp:Literal ID="subNavigation" runat="server" />
+    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        
+                 
+        
+        
+    </div> 
+    <p style="text-align:center;font-size:12px;color:#999;" >Copyright 2008 Chucksoft Solutions</p> 
+    </form>
+</body>
+</html>

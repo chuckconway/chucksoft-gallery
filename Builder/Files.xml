@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Files>
+	<!--<File Source="\Configuration\Staging.Application.cfm" Environment="Staging" Destination="\Application.cfm" />-->
+	<!--<File Source="\Configuration\Production.Application.cfm" Environment="Production" Destination="\Application.cfm" />-->
+</Files>

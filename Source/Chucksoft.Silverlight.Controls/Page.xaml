@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Chucksoft.Silverlight.Controls.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="728" Height="464" Loaded="UserControl_Loaded" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" Foreground="#FF000000">
+	<UserControl.Resources>
+		<LinearGradientBrush x:Key="Gloss" EndPoint="0.5,1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
+			<GradientStop Color="#FF000000" Offset="0"/>
+			<GradientStop Color="#FF1F446A" Offset="0.628000020980835"/>
+			<GradientStop Color="#FF050F04" Offset="0"/>
+			<GradientStop Color="#FF004D9B" Offset="0"/>
+			<GradientStop Color="#FF0F8118" Offset="0.32400000095367432"/>
+		</LinearGradientBrush>
+	</UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White" Height="464" Width="726" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.008*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0.992*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Margin="0,0,47,58" VerticalAlignment="Bottom" Grid.Column="2"  Stroke="#FFA1A1A1" RadiusY="8" RadiusX="8" Grid.ColumnSpan="1" Height="81" Fill="#FFFFFFFF" />
+        <TextBlock Height="21" HorizontalAlignment="Left" Margin="16.6480007171631,0,0,104.973999023438" VerticalAlignment="Bottom" TextWrapping="Wrap" Width="130.016" d:LayoutOverrides="Width" Grid.Column="2" Grid.ColumnSpan="1" >
+			<Run FontFamily="Portable User Interface" FontSize="14.666666984558106" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="#FF000000" Text="3. Upload Photos"/>
+        </TextBlock>
+        <Button Height="25"  HorizontalAlignment="Left" Margin="35.6479988098145,0,0,75.9739990234375" VerticalAlignment="Bottom" Content="Upload" x:Name="uploadButton" Click="uploadButton_Click" Width="75.016" d:LayoutOverrides="Width" Grid.Column="2" />
+        <Rectangle Margin="0,8,0,0" Grid.Column="2" Fill="#FFFFFFFF" Stroke="#FFA1A1A1" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Height="312" RadiusY="9.192" RadiusX="9.192" Width="249.192" HorizontalAlignment="Left" x:Name="background">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Height="312" Margin="253.192001342773,8,47,0" VerticalAlignment="Top" Grid.Column="2" Fill="#FFFFFDFD" Stroke="#FFA1A1A1" RadiusY="8" RadiusX="8"/>
+        <TextBlock Height="25" HorizontalAlignment="Left" Margin="14.456000328064,19.8099994659424,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="141.736" Grid.Column="2" Text="1. Choose a gallery" d:LayoutOverrides="Width"/>
+        <ListBox Height="244.914"  ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="19,61.0859985351563,0,0" VerticalAlignment="Top" x:Name="galleryListBox" Width="213" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, Height" SelectionChanged="galleryListBox_SelectionChanged" FontSize="10" >
+            <ListBox.ItemTemplate>
+                <DataTemplate  >
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock Visibility="Collapsed" Margin="0,0,5,0" Text="{Binding GalleryID}"  />
+                        <TextBlock Text="{Binding Name}"  Foreground="#888" FontSize="12" Padding="5,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox   Margin="272.683990478516,61.0859985351563,63,0" RenderTransformOrigin="0.490000009536743,0.469999998807907"  x:Name="uploadListBox" Grid.ColumnSpan="1" Grid.Column="2" HorizontalAlignment="Stretch" Height="217.914" VerticalAlignment="Top" d:LayoutOverrides="Height" FontSize="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel  Orientation="Horizontal">
+                        <TextBlock Padding="5,0,0,0" FontSize="12" Width="190" Text="{Binding ImageName}"  />
+                        <TextBlock Padding="32,10,0,0" FontSize="12" Foreground="#666" Text="{Binding GalleryName}"  /> 
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button RenderTransformOrigin="0.565999984741211,0.697000026702881" x:Name="removeButton" Click="removeButton_Click"  Foreground="#FF000000" Height="23" HorizontalAlignment="Right" Margin="0,283,63,0" VerticalAlignment="Top" Width="72" Grid.Column="2" Grid.ColumnSpan="1" Content="Remove" />
+        <TextBlock Height="16" HorizontalAlignment="Left" Margin="280.683990478516,45.0019989013672,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="54.168" Grid.Column="2" Text="Image" d:LayoutOverrides="Width" FontSize="12" Foreground="#FF8C8C8C" />
+        <TextBlock Height="16" HorizontalAlignment="Right" Margin="0,45.0859985351563,172.807998657227,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="54.168" FontSize="12" Foreground="#FF8C8C8C" Text="Gallery" Grid.Column="2" d:LayoutOverrides="Width" TextAlignment="Center" RenderTransformOrigin="0.488999992609024,0.187000006437302" />
+        <Button HorizontalAlignment="Stretch" Margin="297.191986083984,18.0020008087158,348,0"  VerticalAlignment="Top" Content="Add Photos" Click="Button_Click" Height="23" Grid.Column="2" />
+        <TextBlock Height="21" HorizontalAlignment="Stretch" Margin="272.683990478516,20.0020008087158,332.492004394531,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="115.016" d:LayoutOverrides="Width" Grid.Column="2" Text="2. " />
+        <Button HorizontalAlignment="Right" Margin="0,283,140,0" VerticalAlignment="Top" Content="Clear All" RenderTransformOrigin="0.565999984741211,0.697000026702881" x:Name="clearAllButton" Foreground="#FF000000" Height="23" Width="54.088" Grid.Column="2" Click="clearAllButton_Click" d:LayoutOverrides="Width"/>
+        <TextBlock Height="45" HorizontalAlignment="Stretch" Margin="2.19199991226196,0,247,8" VerticalAlignment="Bottom" TextWrapping="Wrap" x:Name="uploadErrorMessage" Text="" Foreground="#FFE72121" FontSize="18" Grid.Column="2" d:LayoutOverrides="VerticalAlignment" />
+        <Rectangle Height="25"  HorizontalAlignment="Left" Margin="156.192001342773,0,63,75.9739990234375" VerticalAlignment="Bottom" Grid.Column="2" RadiusX="8" RadiusY="8" Stroke="#FF000000" x:Name="uploadStatusBackground" Width="500">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Gray" Offset="1.0"/>
+                    <GradientStop Color="White" Offset="0"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Height="25" HorizontalAlignment="Left" Margin="156.692001342773,0,63.5,75.9739990234375" VerticalAlignment="Bottom" RadiusX="8" RadiusY="8" Stroke="#FF000000" x:Name="uploadStatus" Width="500" Grid.Column="2">
+        	<Rectangle.Fill>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#FF023501" Offset="1.0"/>
+        			<GradientStop Color="#FF4CFF00" Offset="0"/>
+        		</LinearGradientBrush>
+        	</Rectangle.Fill>
+        </Rectangle>
+        <TextBlock TextAlignment="Center" FontFamily="Times" Foreground="Black" x:Name="progressText" Margin="0,0,288,75.9739990234375" Grid.Column="2" Width="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Height="23.19">0%</TextBlock>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="272.683990478516,0,0,158" VerticalAlignment="Bottom" Width="80.508" Grid.Column="2" Text="" TextWrapping="Wrap" x:Name="fileCountTextBlock" d:LayoutOverrides="Width" FontSize="10" FontWeight="Bold"/>
+    </Grid>
+</UserControl>

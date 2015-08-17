@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+      <bindings>
+        <basicHttpBinding>
+          <binding name="BasicHttpBinding_IGalleryService" maxBufferSize="65536"
+            maxReceivedMessageSize="65536">
+            <security mode="None" />
+          </binding>
+        </basicHttpBinding>
+      </bindings>
+      <client>
+        <endpoint address="http://chuckconway.com/api/GalleryService.svc"
+          binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IGalleryService"
+          contract="Chucksoft.SilverLight.Services.IGalleryService" name="BasicHttpBinding_IGalleryService" />
+      </client>
+    </system.serviceModel>
+</configuration>

@@ -1,0 +1,400 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30428</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD66EBC7-7FF6-4697-A2FD-1176C2F299E7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chucksoft</RootNamespace>
+    <AssemblyName>Chucksoft</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SilverlightApplicationList>{036FC27C-CBD4-40A3-B9B2-2E538BFEEAEB}|..\Chucksoft.Silverlight.Controls\Chucksoft.Silverlight.Controls.csproj|ClientBin|True</SilverlightApplicationList>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.20229.20843, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Silverlight, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MangeGallery.Master.cs">
+      <DependentUpon>MangeGallery.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MangeGallery.Master.designer.cs">
+      <DependentUpon>MangeGallery.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddAlbums.ascx.cs">
+      <DependentUpon>AddAlbums.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddAlbums.ascx.designer.cs">
+      <DependentUpon>AddAlbums.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddGalleries.ascx.cs">
+      <DependentUpon>AddGalleries.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddGalleries.ascx.designer.cs">
+      <DependentUpon>AddGalleries.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddPhotos.ascx.cs">
+      <DependentUpon>AddPhotos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddPhotos.ascx.designer.cs">
+      <DependentUpon>AddPhotos.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddUsers.ascx.cs">
+      <DependentUpon>AddUsers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\AddUsers.ascx.designer.cs">
+      <DependentUpon>AddUsers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageAlbums.ascx.cs">
+      <DependentUpon>ManageAlbums.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageAlbums.ascx.designer.cs">
+      <DependentUpon>ManageAlbums.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageGalleries.ascx.cs">
+      <DependentUpon>ManageGalleries.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageGalleries.ascx.designer.cs">
+      <DependentUpon>ManageGalleries.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManagePhotos.ascx.cs">
+      <DependentUpon>ManagePhotos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManagePhotos.ascx.designer.cs">
+      <DependentUpon>ManagePhotos.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageUsers.ascx.cs">
+      <DependentUpon>ManageUsers.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserControls\ManageUsers.ascx.designer.cs">
+      <DependentUpon>ManageUsers.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Default\GalleryLandingView.ascx.cs">
+      <DependentUpon>GalleryLandingView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Templates\Default\GalleryLandingView.ascx.designer.cs">
+      <DependentUpon>GalleryLandingView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\ViewBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServiceModel\ApiHelper.cs" />
+    <Compile Include="Api\GalleryService.asmx.cs">
+      <DependentUpon>GalleryService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Api\PhotoService.asmx.cs">
+      <DependentUpon>PhotoService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Api\UserService.asmx.cs">
+      <DependentUpon>UserService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChucksoftGallery.Master.cs">
+      <DependentUpon>ChucksoftGallery.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChucksoftGallery.Master.designer.cs">
+      <DependentUpon>ChucksoftGallery.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Controls\UserControls\PresentationViewBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Controls\UserControls\ViewFactory.cs" />
+    <Compile Include="Web\HttpHandlers\AdminPhotoHttpHandler.cs" />
+    <Compile Include="Web\HttpHandlers\PhotoHandlerHelper.cs" />
+    <Compile Include="Web\HttpHandlers\PhotoHttpHandler.cs" />
+    <Compile Include="Web\Pages\ManageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Pages\PresentationBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Pages\SitePageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\AlbumController.cs" />
+    <Compile Include="Web\Presentation\ControllerBase.cs" />
+    <Compile Include="Web\Presentation\GalleryController.cs" />
+    <Compile Include="Web\Presentation\SingleController.cs" />
+    <Compile Include="Web\Presentation\Views\AlbumView.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\AlbumView.ascx.designer.cs">
+      <DependentUpon>AlbumView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\GalleryView.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\GalleryView.ascx.designer.cs">
+      <DependentUpon>GalleryView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\PhotoView.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\PhotoView.ascx.designer.cs">
+      <DependentUpon>PhotoView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\RandomView.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\RandomView.ascx.designer.cs">
+      <DependentUpon>RandomView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\SingleView.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Presentation\Views\SingleView.ascx.designer.cs">
+      <DependentUpon>SingleView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Security\Authorization.cs" />
+    <Compile Include="Web\Controls\UserControls\UserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChucksoftGallery.Master" />
+    <Content Include="Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\About.aspx" />
+    <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\Help.aspx" />
+    <Content Include="Admin\Images\Calendar.png" />
+    <Content Include="Admin\JavaScript\CalendarPopup.js" />
+    <Content Include="Admin\Manage.aspx" />
+    <Content Include="Admin\Settings.aspx" />
+    <Content Include="Admin\UserControls\AddAlbums.ascx" />
+    <Content Include="Admin\UserControls\AddGalleries.ascx" />
+    <Content Include="Admin\UserControls\AddPhotos.ascx" />
+    <Content Include="Admin\UserControls\AddUsers.ascx" />
+    <Content Include="Admin\UserControls\ManageAlbums.ascx" />
+    <Content Include="Admin\UserControls\ManageGalleries.ascx" />
+    <Content Include="Admin\UserControls\ManagePhotos.ascx" />
+    <Content Include="Admin\UserControls\ManageUsers.ascx" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="ResetPassword.aspx" />
+    <Content Include="Scripts\litebox-1.0.js" />
+    <Content Include="Scripts\moo.fx.js" />
+    <Content Include="Scripts\prototype.lite.js" />
+    <Content Include="Templates\Default\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Frameworks\Conway\Conway.csproj">
+      <Project>{D07FE034-C922-4D30-B3BC-1E5BE109066F}</Project>
+      <Name>Conway</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chucksoft.Entities\Chucksoft.Entities.csproj">
+      <Project>{05D20A45-0522-4E7B-8A1C-A4F33BB1A023}</Project>
+      <Name>Chucksoft.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chucksoft.Logic\Chucksoft.Logic.csproj">
+      <Project>{9057E023-F623-4CF1-A75D-EC5F042AA102}</Project>
+      <Name>Chucksoft.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Admin\AdminResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Images\closelabel.gif" />
+    <Content Include="Admin\Images\loading.gif" />
+    <Content Include="Admin\Images\nextlabel.gif" />
+    <Content Include="Admin\Images\prevlabel.gif" />
+    <Content Include="Admin\JavaScript\AdminScript.js" />
+    <Content Include="Admin\JavaScript\ui.datepicker.js" />
+    <Content Include="Admin\MangeGallery.Master" />
+    <Content Include="Admin\style.css" />
+    <Content Include="Admin\ui.datepicker.css" />
+    <Content Include="Api\GalleryService.asmx" />
+    <Content Include="Api\PhotoService.asmx" />
+    <Content Include="Api\UserService.asmx" />
+    <Content Include="Chucksoft.Silverlight.ControlsTestPage.aspx" />
+    <Content Include="Chucksoft.Silverlight.ControlsTestPage.html" />
+    <Content Include="ClientBin\Chucksoft.Silverlight.Controls.xap" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="GalleryStyles.css" />
+    <Content Include="Images\closelabel.gif" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\login.png" />
+    <Content Include="Images\nextlabel.gif" />
+    <Content Include="Images\prevlabel.gif" />
+    <Content Include="litebox.css" />
+    <None Include="Properties\DataSources\Chucksoft.Entities.Gallery.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Templates\Default\AlbumView.ascx" />
+    <Content Include="Templates\Default\GalleryLandingView.ascx" />
+    <Content Include="Templates\Default\GalleryView.ascx" />
+    <Content Include="Templates\Default\Images\blank.gif" />
+    <Content Include="Templates\Default\Images\closelabel.gif" />
+    <Content Include="Templates\Default\Images\gallerybackground.png" />
+    <Content Include="Templates\Default\Images\galleryimagebackground.png" />
+    <Content Include="Templates\Default\Images\loading.gif" />
+    <Content Include="Templates\Default\Images\login.png" />
+    <Content Include="Templates\Default\Images\nextlabel.gif" />
+    <Content Include="Templates\Default\Images\photobackground.png" />
+    <Content Include="Templates\Default\Images\portraitbackground.png" />
+    <Content Include="Templates\Default\Images\portraitimagebackground.png" />
+    <Content Include="Templates\Default\Images\prevlabel.gif" />
+    <Content Include="Templates\Default\PhotoView.ascx" />
+    <Content Include="Templates\Default\RandomView.ascx" />
+    <Content Include="Templates\Default\SingleView.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,8 @@
+<cross-domain-policy>
+  <allow-access-from domain="chuckconway.com" />
+  <allow-access-from domain="www.chuckconway.com" />
+  <allow-access-from domain="testgallery.com" />
+  <allow-access-from domain="www.testgallery.com" />
+  <allow-access-from domain="testgallery.com" />
+  <allow-access-from domain="testgallery.com" />
+</cross-domain-policy>

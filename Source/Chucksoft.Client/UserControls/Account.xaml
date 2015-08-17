@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Chucksoft.Client.UserControls.Account"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="238" Width="248">
+    <Grid Height="242">
+        <TextBox Height="23" Margin="12,39,12,0" Name="usernameTextBox" VerticalAlignment="Top" />
+        <Label Height="23" HorizontalAlignment="Left" Margin="12,10,0,0" Name="label1" VerticalAlignment="Top" Width="120">Username</Label>
+        <TextBox Margin="12,114,0,105" Name="passwordTextBox" HorizontalAlignment="Left" Width="224" />
+        <Label Height="23" HorizontalAlignment="Left" Margin="12,85,0,0" Name="label2" VerticalAlignment="Top" Width="120">Password</Label>
+        <Button Height="23" HorizontalAlignment="Left" Margin="14,0,0,60" Name="SaveButton" VerticalAlignment="Bottom" Width="48" ClipToBounds="True">Save</Button>
+        <Label Height="25" Margin="14,0,12,29" Name="messageLabel" VerticalAlignment="Bottom"></Label>
+    </Grid>
+</UserControl>

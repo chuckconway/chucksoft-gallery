@@ -1,0 +1,29 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="GalleryServiceSoap"  maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="UserServiceSoap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                  <security mode="None" />
+                </binding>
+                <binding name="PhotoServiceSoap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                  <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://testgallery.com/Api/GalleryService.asmx"
+                binding="basicHttpBinding" bindingConfiguration="GalleryServiceSoap"
+                contract="GalleryService.GalleryServiceSoap" name="GalleryServiceSoap" />
+            <endpoint address="http://testgallery.com/Api/UserService.asmx"
+                binding="basicHttpBinding" bindingConfiguration="UserServiceSoap"
+                contract="UserService.UserServiceSoap" name="UserServiceSoap" />
+            <endpoint address="http://testgallery.com/Api/PhotoService.asmx"
+                binding="basicHttpBinding" bindingConfiguration="PhotoServiceSoap"
+                contract="PhotoService.PhotoServiceSoap" name="PhotoServiceSoap" />
+        </client>
+    </system.serviceModel>
+</configuration>

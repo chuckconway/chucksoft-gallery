@@ -1,0 +1,73 @@
+﻿<Window x:Class="Chucksoft.Client.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PhotoGallery -- By Chucksoft" Height="452" Width="746" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" Loaded="Window_Loaded" SnapsToDevicePixels="True">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.008*"/>
+			<ColumnDefinition Width="0*"/>
+			<ColumnDefinition Width="0.992*"/>
+		</Grid.ColumnDefinitions>
+		<Rectangle Margin="0.552,0,31.568,11" VerticalAlignment="Bottom" Grid.Column="2"  Stroke="#FFA1A1A1" RadiusY="8" RadiusX="8" Height="81" Fill="#FFFFFFFF" RenderTransformOrigin="0.507,0.556" />
+		<TextBlock Height="21" HorizontalAlignment="Left" Margin="12.768,0,0,53.974" VerticalAlignment="Bottom" TextWrapping="Wrap" Width="130.016"  Grid.Column="2" Grid.ColumnSpan="1" ><Run FontFamily="Portable User Interface" FontSize="14.666666984558106" FontStretch="Normal" FontStyle="Normal" FontWeight="Normal" Foreground="#FF000000" Text="3. Upload Photos"/></TextBlock>
+		<Button Height="25"  HorizontalAlignment="Left" Margin="31.768,0,0,24.974" VerticalAlignment="Bottom" Content="Upload" x:Name="uploadButton" Click="uploadButton_Click" Width="75.016"  Grid.Column="2" />
+		<Rectangle Margin="0.12,8,0,0" Grid.Column="2" Fill="#FFFFFFFF" Stroke="#FFA1A1A1" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Height="312" RadiusY="9.192" RadiusX="9.192" Width="249.192" HorizontalAlignment="Left" x:Name="background">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleY="-1"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+		</Rectangle>
+		<Rectangle Height="312" Margin="253.312,8,32,0" VerticalAlignment="Top" Grid.Column="2" Fill="#FFFFFDFD" Stroke="#FFA1A1A1" RadiusY="8" RadiusX="8"/>
+		<TextBlock Height="25" HorizontalAlignment="Left" Margin="14.576,19.81,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="141.736" Grid.Column="2" Text="1. Choose a gallery" />
+		<ListBox Height="244.914"  ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="19.12,61.086,0,0" VerticalAlignment="Top" x:Name="galleryListBox" Width="213" Grid.Column="2"  SelectionChanged="galleryListBox_SelectionChanged" FontSize="10" >
+			<ListBox.ItemTemplate>
+				<DataTemplate  >
+					<StackPanel  Orientation="Horizontal">
+						<TextBlock Visibility="Collapsed" Margin="0,0,5,0" Text="{Binding Path=GalleryID}"  />
+						<TextBlock Text="{Binding Path=Name}"  Foreground="#888" FontSize="12" Padding="5,0,0,0" />
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<ListBox   Margin="272.804,61.086,48,0" RenderTransformOrigin="0.490000009536743,0.469999998807907"  x:Name="uploadListBox" Grid.ColumnSpan="1" Grid.Column="2" HorizontalAlignment="Stretch" Height="217.914" VerticalAlignment="Top"  FontSize="10">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel  Orientation="Horizontal">
+						<TextBlock Padding="5,0,0,0" FontSize="12" Width="190" Text="{Binding Path=ImageName}"  />
+						<TextBlock Padding="32,0,0,0" FontSize="12" Foreground="#666" Text="{Binding Path=GalleryName}"  /> 
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<Button RenderTransformOrigin="0.565999984741211,0.697000026702881" x:Name="removeButton" Click="removeButton_Click"  Foreground="#FF000000" Height="23" HorizontalAlignment="Right" Margin="0,283,48,0" VerticalAlignment="Top" Width="72" Grid.Column="2" Grid.ColumnSpan="1" Content="Remove" />
+		<TextBlock Height="16" HorizontalAlignment="Left" Margin="280.804,45.002,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="54.168" Grid.Column="2" Text="Image"  FontSize="12" Foreground="#FF8C8C8C" />
+		<TextBlock Height="16" HorizontalAlignment="Right" Margin="0,45.086,157.808,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="54.168" FontSize="12" Foreground="#FF8C8C8C" Text="Gallery" Grid.Column="2" TextAlignment="Center" RenderTransformOrigin="0.488999992609024,0.187000006437302" />
+		<Button Margin="289.312,16.29,341,0"  VerticalAlignment="Top" Content="Add Photos" Click="addPhotos_Click" Height="23" Grid.Column="2" x:Name="addPhotos" />
+		<TextBlock Height="21" Margin="272.804,21.522,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="12.508"  Grid.Column="2" Text="2. " HorizontalAlignment="Left" />
+		<Button HorizontalAlignment="Right" Margin="0,283,125,0" VerticalAlignment="Top" Content="Clear All" RenderTransformOrigin="0.565999984741211,0.697000026702881" x:Name="clearAllButton" Foreground="#FF000000" Height="23" Width="54.088" Grid.Column="2" Click="clearAllButton_Click" />
+		<TextBlock Height="45" HorizontalAlignment="Stretch" Margin="2.312,0,232,64" VerticalAlignment="Bottom" TextWrapping="Wrap" x:Name="uploadErrorMessage" Foreground="#FFE72121" FontSize="18" Grid.Column="2"  />
+		<Rectangle Height="25"  HorizontalAlignment="Left" Margin="176.16,0,0,24.974" VerticalAlignment="Bottom" Grid.Column="2" RadiusX="8" RadiusY="8" Stroke="#FF000000" x:Name="uploadStatusBackground" Width="500">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="Gray" Offset="1.0"/>
+					<GradientStop Color="White" Offset="0"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<Rectangle Height="25" HorizontalAlignment="Left" Margin="176.16,0,0,24.974" VerticalAlignment="Bottom" RadiusX="8" RadiusY="8" Stroke="#FF000000" x:Name="uploadStatus" Width="500" Grid.Column="2">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FF023501" Offset="1.0"/>
+					<GradientStop Color="#FF4CFF00" Offset="0"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<TextBlock TextAlignment="Center" FontFamily="Times" Foreground="Black" x:Name="progressText" Margin="0,0,274.964,33" Grid.Column="2" Width="40" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Height="11"><Run Text="0%"/></TextBlock>
+		<TextBlock Height="23" HorizontalAlignment="Left" Margin="272.804,0,0,214" VerticalAlignment="Bottom" Width="80.508" Grid.Column="2" Text="" TextWrapping="Wrap" x:Name="fileCountTextBlock"  FontSize="10" FontWeight="Bold"/>
+
+	</Grid>
+</Window>
